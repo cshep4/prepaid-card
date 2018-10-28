@@ -4,6 +4,7 @@ import (
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
+	"os"
 	. "simple-prepaid-card/controller"
 	. "simple-prepaid-card/dao"
 )
@@ -24,7 +25,7 @@ func main() {
 	userController.CreateRoutes(r)
 	merchantController.CreateRoutes(r)
 
-	if err := http.ListenAndServe(":3000", r); err != nil {
+	if err := http.ListenAndServe(os.Getenv("PORT"), r); err != nil {
 		log.Fatal(err)
 	}
 }
