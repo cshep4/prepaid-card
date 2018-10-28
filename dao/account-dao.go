@@ -2,8 +2,8 @@ package dao
 
 import (
 	"github.com/globalsign/mgo/bson"
-	. "prepaid-card/constant"
-	. "prepaid-card/model"
+	. "simple-prepaid-card/constant"
+	. "simple-prepaid-card/model"
 )
 
 type AccountDAO struct {

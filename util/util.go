@@ -2,7 +2,7 @@ package util
 
 import (
 	"fmt"
-	. "prepaid-card/constant"
+	. "simple-prepaid-card/constant"
 	"time"
 
 )

@@ -1,6 +1,6 @@
 package service
 
-import . "prepaid-card/dao"
+import . "simple-prepaid-card/dao"
 
 func NewMerchantService() MerchantService {
 	merchantService := MerchantService{}

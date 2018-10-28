@@ -4,12 +4,12 @@ import (
 	"github.com/globalsign/mgo/bson"
 	"github.com/gorilla/mux"
 	"net/http"
-	. "prepaid-card/dao"
-	. "prepaid-card/model"
-	. "prepaid-card/model/request"
-	. "prepaid-card/model/response"
-	"prepaid-card/response"
-	"prepaid-card/util"
+	. "simple-prepaid-card/dao"
+	. "simple-prepaid-card/model"
+	. "simple-prepaid-card/model/request"
+	. "simple-prepaid-card/model/response"
+	"simple-prepaid-card/response"
+	"simple-prepaid-card/util"
 )
 
 type UserService struct {

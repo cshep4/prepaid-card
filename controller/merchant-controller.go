@@ -2,8 +2,8 @@ package controller
 
 import (
 	"github.com/gorilla/mux"
-	. "prepaid-card/constant"
-	. "prepaid-card/service"
+	. "simple-prepaid-card/constant"
+	. "simple-prepaid-card/service"
 )
 
 type MerchantController struct {

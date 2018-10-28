@@ -4,8 +4,8 @@ import (
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
-	. "prepaid-card/controller"
-	. "prepaid-card/dao"
+	. "simple-prepaid-card/controller"
+	. "simple-prepaid-card/dao"
 )
 
 var userController UserController

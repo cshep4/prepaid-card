@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/globalsign/mgo"
 	"os"
-	. "prepaid-card/model"
+	. "simple-prepaid-card/model"
 )
 
 type DAO interface {
