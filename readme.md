@@ -2,6 +2,8 @@
 
 This is written in Golang with Gorilla Mux used for routing. A MongoDB database is used to store data. It is hosted on Heroku at https://simple-prepaid-card.herokuapp.com/.
 
+Please note that as this is deployed on Heroku's free tier, the web server will shut down after 30 minutes of inactivity. Therefore the initial request may take slightly longer whilst the server starts up again.
+
 # REST API
 
 The REST API to the prepaid card app is described below.
