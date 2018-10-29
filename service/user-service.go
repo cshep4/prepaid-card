@@ -89,21 +89,24 @@ func (u *UserService) ViewBalance(w http.ResponseWriter, r *http.Request) {
 }
 
 func (u *UserService) ViewStatement(w http.ResponseWriter, r *http.Request) {
-	statementRequest, err := DecodeStatementRequest(r.Body)
+	fromDate, err1 := util.ParseDateParameter(r.URL.Query().Get("fromDate"))
+	toDate, err2 := util.ParseDateParameter(r.URL.Query().Get("toDate"))
 
-	if err != nil {
-		response.Error(w, http.StatusBadRequest, err.Error())
+	if err1 != nil || err2 != nil {
+		response.Error(w, http.StatusBadRequest, "Invalid request payload")
 		return
 	}
 
-	account, err := u.accountDao.FindByCardNumber(*statementRequest.CardNumber)
+	cardNumber := mux.Vars(r)["cardNumber"]
+
+	account, err := u.accountDao.FindByCardNumber(cardNumber)
 
 	if err != nil {
 		response.Error(w, http.StatusBadRequest, "Invalid card number")
 		return
 	}
 
-	transactions, err := u.retrieveTransactionsInRange(account.Transactions, statementRequest.FromDate, statementRequest.ToDate)
+	transactions, err := u.retrieveTransactionsInRange(account.Transactions, fromDate, toDate)
 
 	if err != nil {
 		response.Error(w, http.StatusInternalServerError, err.Error())
@@ -123,8 +126,8 @@ func (u *UserService) ViewStatement(w http.ResponseWriter, r *http.Request) {
 
 	resp := Statement{
 		Account:      a,
-		FromDate:     statementRequest.FromDate,
-		ToDate:       statementRequest.ToDate,
+		FromDate:     fromDate,
+		ToDate:       toDate,
 		Balance:      b,
 		Transactions: transactions,
 	}

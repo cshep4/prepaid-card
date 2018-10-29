@@ -194,7 +194,7 @@ func (m *MerchantService) Refund(w http.ResponseWriter, r *http.Request) {
 		response.Error(w, http.StatusInternalServerError, err.Error())
 	}
 
-	response.Json(w, http.StatusOK, refundTransaction)
+	response.Json(w, http.StatusCreated, refundTransaction)
 }
 
 func (m *MerchantService) retrieveTransactionAndAmount(body io.ReadCloser) (*Transaction, *GBP, error) {
