@@ -14,27 +14,9 @@ func (a AccountDAO) Collection() string {
 	return ACCOUNT
 }
 
-func (a *AccountDAO) FindAll() ([]Account, error) {
-	var accounts []Account
-	err := db.C(a.Collection()).Find(bson.M{}).All(&accounts)
-	return accounts, err
-}
-
-func (a *AccountDAO) FindById(id string) (Account, error) {
-	var account Account
-	err := db.C(a.Collection()).FindId(bson.ObjectIdHex(id)).One(&account)
-	return account, err
-}
-
 func (a *AccountDAO) FindByCardNumber(cardNumber string) (Account, error) {
 	var account Account
 	err := db.C(a.Collection()).Find(bson.M{"cardNumber": cardNumber}).One(&account)
-	return account, err
-}
-
-func (a *AccountDAO) FindByField(field string, value interface{}) (Account, error) {
-	var account Account
-	err := db.C(a.Collection()).Find(nil).Select(bson.M{field: value}).One(&account)
 	return account, err
 }
 
@@ -46,11 +28,6 @@ func (a *AccountDAO) FindByTransactionId(value bson.ObjectId) (Account, error) {
 
 func (a *AccountDAO) Insert(account Account) error {
 	err := db.C(a.Collection()).Insert(&account)
-	return err
-}
-
-func (a *AccountDAO) Delete(account Account) error {
-	err := db.C(a.Collection()).Remove(&account)
 	return err
 }
 

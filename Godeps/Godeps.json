@@ -7,6 +7,10 @@
 	],
 	"Deps": [
 		{
+			"ImportPath": "github.com/ahl5esoft/golang-underscore",
+			"Rev": "71631668610762c7f93a477b73a8c032950a8da6"
+		},
+		{
 			"ImportPath": "github.com/globalsign/mgo",
 			"Comment": "r2018.06.15-9-geeefdec",
 			"Rev": "eeefdecb41b842af6dc652aaea4026e8403e62df"
@@ -35,6 +39,21 @@
 			"ImportPath": "github.com/gorilla/mux",
 			"Comment": "v1.6.2-9-g9e1f595",
 			"Rev": "9e1f5955c0d22b55d9e20d6faa28589f83b2faca"
+		},
+		{
+			"ImportPath": "github.com/json-iterator/go",
+			"Comment": "1.1.5-8-g2433035",
+			"Rev": "2433035e513208b0f7bd5b50d0aecd889b2c1ff8"
+		},
+		{
+			"ImportPath": "github.com/modern-go/concurrent",
+			"Comment": "1.0.3",
+			"Rev": "bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94"
+		},
+		{
+			"ImportPath": "github.com/modern-go/reflect2",
+			"Comment": "v1.0.1",
+			"Rev": "94122c33edd36123c84d5368cfb2b69df93a0ec8"
 		}
 	]
 }

@@ -14,28 +14,16 @@ func (t TransactionDAO) Collection() string {
 	return TRANSACTION
 }
 
-func (t *TransactionDAO) FindAll() ([]Transaction, error) {
-	var transactions []Transaction
-	err := db.C(t.Collection()).Find(bson.M{}).All(&transactions)
-	return transactions, err
-}
-
 func (t *TransactionDAO) FindById(id string) (Transaction, error) {
 	var transaction Transaction
 	err := db.C(t.Collection()).FindId(bson.ObjectIdHex(id)).One(&transaction)
 	return transaction, err
 }
 
-func (t *TransactionDAO) FindByField(field string, value interface{}) (Transaction, error) {
-	var transaction Transaction
-	err := db.C(t.Collection()).Find(nil).Select(bson.M{field: value}).One(&transaction)
-	return transaction, err
-}
-
-func (t *TransactionDAO) FindTransactionByField(field string, value interface{}) (Transaction, error) {
-	var transaction Transaction
-	err := db.C(t.Collection()).Find(bson.M{"transactions": bson.M{"$elemMatch": bson.M{field: value}}}).One(&transaction)
-	return transaction, err
+func (t *TransactionDAO) FindAllByIds(id []bson.ObjectId) ([]Transaction, error) {
+	var transactions []Transaction
+	err := db.C(t.Collection()).Find(bson.M{"_id": bson.M{"$in": id}}).All(&transactions)
+	return transactions, err
 }
 
 func (t *TransactionDAO) Insert(transaction Transaction) error {

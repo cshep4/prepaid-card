@@ -20,6 +20,6 @@ func (u UserController) CreateRoutes(r *mux.Router) {
 	r.HandleFunc(u.Path() + "/create", userService.CreateAccount).Methods("POST")
 	r.HandleFunc(u.Path() + "/load", userService.Load).Methods("PUT")
 	r.HandleFunc(u.Path() + "/balance/{cardNumber}", userService.ViewBalance).Methods("GET")
-	r.HandleFunc(u.Path() + "/statement/{cardNumber}", userService.ViewStatement).Methods("GET")
+	r.HandleFunc(u.Path() + "/statement", userService.ViewStatement).Methods("POST")
 }
 

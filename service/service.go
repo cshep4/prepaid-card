@@ -12,7 +12,8 @@ func NewMerchantService() MerchantService {
 
 func NewUserService() UserService {
 	userService := UserService{}
-	userService.dao = AccountDAO{}
+	userService.accountDao = AccountDAO{}
+	userService.transactionDao = TransactionDAO{}
 
 	return userService
 }
