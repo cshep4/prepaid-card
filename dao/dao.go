@@ -37,6 +37,7 @@ func SaveAccountAndTransaction(account Account,
 								rollbackAccount func(),
 								rollbackTransaction func()) error {
 	saveErr := make(chan error, 2)
+	defer close(saveErr)
 
 	go func() { saveErr <- saveAccount(account) }()
 	go func() { saveErr <- saveTransaction(transaction) }()
